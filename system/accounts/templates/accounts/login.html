@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+
+{% block content %}
+<form class="form-login" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+        <div class="input-box">
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="submit-button">Entrar</button>
+
+    </fieldset>
+    <p class="extra-buttons">
+        <a href="{% url 'accounts:register' %}" title="">Cadastre-se</a>
+    </p>
+</form>
+
+<script type="text/javascript">
+	document.getElementById('id_username').placeholder = 'Usuário'
+	document.getElementById('id_password').placeholder = 'Senha'
+</script>
+{% endblock %}

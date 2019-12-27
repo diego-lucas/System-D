@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="row-up">
+      <div class="titles">
+        <h3 class="page-title">Produtos Cadastrados</h3>
+        <a class="add-new" href="#">Adicionar Novo</a>
+      </div>
+    </div>
+    <div class="products-list">
+      {% for product in products %}
+        <div class="card">
+          <a href="{{ product.get_absolute_url }}"><img class="image" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+          <div class="card-text">
+            <a href="{{ product.get_absolute_url }}"><h4 class="card-title">{{ product.name }}</h4></a>
+            <p class="card-category">{{ product.category }}</p>
+            <p class="card-info">Preço: R$ {{ product.price }} | Distribuidora: {{ product.distributor.name }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}

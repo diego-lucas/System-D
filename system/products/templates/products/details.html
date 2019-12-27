@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block delete_modal %}{% endblock %}
+
+{% block content %}
+  <div class="row-up">
+    <div class="titles">
+      <h3 class="page-title">{{ product }}</h3>
+      <a class="add-new" href="#">Editar Produto</a>
+    </div>
+  </div>
+  <div class="single-product">
+  	<div class="product-image">
+  		<img src="{{ product.image.url }}">
+  	</div>
+  	<div class="product-info">
+  		<div class="table-info">
+  			<div class="row">
+  				<span class="fleft">Categoria:</span><span class="fright">{{ product.category }}</span>
+  			</div>
+  			<div class="row">
+  				<span class="fleft">Distribuidora:</span><span class="fright">{{ product.distributor }}</span>
+  			</div>
+  			<div class="row">
+  				<span class="fleft">Preço:</span><span class="fright">{{ product.price }}</span>
+  			</div>
+  			<div class="row">
+  				<span class="fleft">Cadastrado em:</span><span class="fright">{{ product.created_at|date:'d/b/Y' }}</span>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="buttons">
+  		<div>
+  			<a class="back-button" href="{% url 'products:index' %}"><img src="{% static 'img/back.png' %}">Voltar</a>
+  			<button class="delete-button" onclick="open_modal('delete_modal')"><img src="{% static 'img/delete.png' %}"></button>
+  		</div>
+  	</div>
+  </div>
+  <div class="delete_modal">
+    <div class="modal-content">
+      <h4>Tem certeza que quer excluir {{ product.name }}?</h4>
+      <div>
+        <a class="delete-button" href="{% url 'products:delete_product' product.slug %}">Excluir</a>
+        <a class="cancel-button" href="" onclick="close_modal('delete_modal')">Cancelar</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

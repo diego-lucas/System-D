@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+{% block content %}
+<h2>Seja bem vindo {% if user.name %}{{ user.name }}{% else %}{{ user }}{% endif %}!<br>
+Qual seu próximo destino?</h2>
+<div class="menu">
+	<a href="{% url 'products:index' %}">Produtos</a><br><br>
+	<a href="#">Estoque (Em Breve)</a><br><br>
+	<a href="#">Dados (Em Breve)</a><br><br>
+	<a href="{% url 'accounts:edit' %}">Conta</a><br>
+	<div class="exit-button">
+		<a href="{% url 'accounts:logout' %}"><img width="47px" src="{% static 'img/logout.png' %}"><span>Sair</span></a>
+	</div>
+</div>
+{% endblock %}

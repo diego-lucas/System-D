@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>System D</title>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="sidebar">
+		<div class="container">
+			<a href="{% url 'core:home' %}"><img width="200px" src="{% static 'img/logo-branca-system-d.png' %}"></a>
+			<div>
+				<nav class="menu">
+					<a href="{% url 'products:index' %}">Produtos</a>
+					<a href="{% url 'products:index' %}">Estoque (Em Breve)</a>
+					<a href="{% url 'products:index' %}">Dados (Em Breve)</a>
+					<a href="{% url 'accounts:edit' %}">Conta</a>
+				</nav>
+				<div class="exit-button">
+					<a href="{% url 'accounts:logout' %}"><img width="47px" src="{% static 'img/logout.png' %}"><span>Sair</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		{% block content %}{% endblock %}
+	</div>
+
+</body>
+  <script>
+    function open_modal(modal){
+      document.querySelectorAll('.'+modal)[0].style.display = "flex"
+    }
+    function close_modal(modal){
+      document.querySelectorAll('.'+modal)[0].style.display = "none"
+    }
+  </script>
+
+</html>

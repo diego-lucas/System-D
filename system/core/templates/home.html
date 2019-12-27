@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style-home.css' %}" media="screen" />
+    <title>System D</title>
+</head>
+<body>
+
+	<div class="container">
+		<div>
+		<div>
+			<img width="200px" src="{% static 'img/logo-branca-system-d.png' %}">
+		</div>
+		<div>
+			{% block content %}{% endblock %}
+		</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
